@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,3 +41,19 @@ Route::get('kali/{nilai1}/{nilai2}', function ($nilai1, $nilai2) {
 Route::get('kurang/{nilai1}/{nilai2}', function ($nilai1, $nilai2) {
     return 'hasil pengurangan adalah '. $nilai1 - $nilai2;
 });
+
+Route::get('coba', function () {
+    return view('coba');
+});
+
+Route::get('tabel', function () {
+    $data = ['pc', 'laptop', 'keyboard', 'meja', 'kursi', 'pensil'];
+    // return view('table', ['data' => $data, 'data2' => $barang]);
+    return view('table', compact('data'));
+});
+
+// Route::get('siswa', [SiswaController::class, 'index']);
+// Route::get('tambahsiswa', [SiswaController::class, 'create']);
+// Route::get('tambahsiswa', [SiswaController::class, 'create']);
+
+Route::resource('siswa', SiswaController::class);
